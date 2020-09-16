@@ -1,5 +1,11 @@
 var BASE_URL = document.scripts[document.scripts.length - 1].src.substring(0, document.scripts[document.scripts.length - 1].src.lastIndexOf("/") + 1);
 window.BASE_URL = BASE_URL;
+/**
+ * 可以快速了解加载模式：https://blog.csdn.net/weixin_41049850/article/details/81001709
+ * 1:这里定义所有JS文件的入口（位置与其的缩写标记）
+ * 2:然后在格式的js文件中。define方式引入各自的js文件中使用。如E:\App\newadmin\public\static\admin\js\index.js
+ *
+ */
 require.config({
     urlArgs: "v=" + CONFIG.VERSION,
     baseUrl: BASE_URL,

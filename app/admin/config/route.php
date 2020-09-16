@@ -6,6 +6,9 @@
 return [
 
     // 路由中间件
+    /**
+     * 这样，所有该应用下的请求都会执行 ViewInit 和 CheckAdmin
+     */
     'middleware' => [
 
         // 后台视图初始化

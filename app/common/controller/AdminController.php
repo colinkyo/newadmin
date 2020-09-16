@@ -5,7 +5,7 @@
 // +----------------------------------------------------------------------
 // | PHP交流群: 763822524
 // +----------------------------------------------------------------------
-// | 开源协议  https://mit-license.org 
+// | 开源协议  https://mit-license.org
 // +----------------------------------------------------------------------
 // | github开源项目：https://github.com/zhongshaofa/EasyAdmin
 // +----------------------------------------------------------------------
@@ -93,6 +93,32 @@ class AdminController extends BaseController
     protected function initialize()
     {
         parent::initialize();
+        /**
+         *
+         * ThinkTemplate开发指南
+         * https://www.kancloud.cn/manual/think-template/1286403
+         *
+         * app/admin/view/layout/default.html
+         * 当做默认布局app/admin/view/layout/default.html
+         * {__CONTENT__}
+         * 用来替换内容
+         *
+         * 采用了第三种方式：
+         * 使用内置的layout方法可以更灵活的在程序中控制模板输出的布局功能，尤其适用于局部需要布局或者关闭布局的情况，
+         * 这种方式也不需要在配置文件中开启layout_on
+         *
+         * 流程：
+         * 读取layout（layout/default）模板之后，
+         * 会再解析路由的模板文件，并把解析后的内容替换到
+         * layout（layout/default）布局模板文件的{__CONTENT__} 特定字符串
+         *
+         * 开启
+         * $this->view->engine->layout(true);
+         * $this->view->engine->layout('Layout/newlayout');
+         * 临时关闭当前模板的布局功能
+         * $this->view->engine->layout(false);
+         *
+         */
         $this->layout && $this->app->view->engine()->layout($this->layout);
         $this->isDemo = Env::get('easyadmin.is_demo', false);
     }

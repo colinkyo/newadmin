@@ -5,7 +5,7 @@
 // +----------------------------------------------------------------------
 // | PHP交流群: 763822524
 // +----------------------------------------------------------------------
-// | 开源协议  https://mit-license.org 
+// | 开源协议  https://mit-license.org
 // +----------------------------------------------------------------------
 // | github开源项目：https://github.com/zhongshaofa/EasyAdmin
 // +----------------------------------------------------------------------
@@ -21,6 +21,7 @@ use think\facade\Env;
 /**
  * Class Login
  * @package app\admin\controller
+ * app先检查app/admin/config/app.php 没有再检查config/app.php
  */
 class Login extends AdminController
 {
@@ -46,6 +47,7 @@ class Login extends AdminController
     public function index()
     {
         $captcha = Env::get('easyadmin.captcha', 1);
+        //登录判断
         if ($this->request->isPost()) {
             $post = $this->request->post();
             $rule = [
@@ -73,8 +75,10 @@ class Login extends AdminController
             session('admin', $admin);
             $this->success('登录成功');
         }
+        //初始化登录界面 demo 在 AdminController类定义，也是读取了.Env 配置
         $this->assign('captcha', $captcha);
         $this->assign('demo', $this->isDemo);
+        //调用view视图 app/admin/view/login/index.html
         return $this->fetch();
     }
 

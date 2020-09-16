@@ -5,7 +5,7 @@
 // +----------------------------------------------------------------------
 // | PHP交流群: 763822524
 // +----------------------------------------------------------------------
-// | 开源协议  https://mit-license.org 
+// | 开源协议  https://mit-license.org
 // +----------------------------------------------------------------------
 // | github开源项目：https://github.com/zhongshaofa/EasyAdmin
 // +----------------------------------------------------------------------
@@ -27,6 +27,7 @@ class CheckAdmin
 
     public function handle(Request $request, \Closure $next)
     {
+        //获取app/admin/config/admin.php
         $adminConfig = config('admin');
         $adminId = session('admin.id');
         $expireTime = session('admin.expire_time');

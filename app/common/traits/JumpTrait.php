@@ -8,6 +8,8 @@ use think\Response;
 /**
  * Trait JumpTrait
  * @package app\common\traits
+ *
+ * 在app/common/controller/AdminController.php 中 直接使用
  */
 trait JumpTrait
 {
