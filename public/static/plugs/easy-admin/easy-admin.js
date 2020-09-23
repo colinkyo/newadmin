@@ -183,6 +183,7 @@ define(["jquery", "tableSelect", "ckeditor"], function ($, tableSelect, undefine
                 options.limit = options.limit || 15;
                 options.limits = options.limits || [10, 15, 20, 25, 50, 100];
                 options.cols = options.cols || [];
+                //该参数可自由配置头部工具栏右侧的图标按钮，值为一个数组，支持以下可选值: ['filter', 'print', 'exports']
                 options.defaultToolbar = (options.defaultToolbar === undefined && !options.search) ? ['filter', 'print', 'exports'] : ['filter', 'print', 'exports', {
                     title: '搜索',
                     layEvent: 'TABLE_SEARCH',

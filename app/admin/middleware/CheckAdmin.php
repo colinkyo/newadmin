@@ -27,10 +27,13 @@ class CheckAdmin
 
     public function handle(Request $request, \Closure $next)
     {
+        //助手函数https://www.kancloud.cn/manual/thinkphp6_0/1037653
         //获取app/admin/config/admin.php
         $adminConfig = config('admin');
         $adminId = session('admin.id');
         $expireTime = session('admin.expire_time');
+
+        //权限验证服务 app/common/service/AuthService.php
         $authService = new AuthService($adminId);
         $currentNode = $authService->getCurrentNode();
         $currentController = parse_name($request->controller());

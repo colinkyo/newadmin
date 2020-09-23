@@ -8,7 +8,7 @@ use EasyAdmin\annotation\NodeAnotation;
 use think\App;
 
 /**
- * @ControllerAnnotation(title="test_goods")
+ * @ControllerAnnotation(title="商品列表")
  */
 class Goods extends AdminController
 {
@@ -21,6 +21,14 @@ class Goods extends AdminController
 
         $this->model = new \app\admin\model\TestGoods();
         
+        $this->assign('getSexList', $this->model->getSexList());
+
+        $this->assign('getCheckboxList', $this->model->getCheckboxList());
+
+        $this->assign('getModeList', $this->model->getModeList());
+
+        $this->assign('getStatusList', $this->model->getStatusList());
+
     }
 
     

@@ -44,8 +44,8 @@ class ViewInit
         $adminModuleName = config('app.admin_alias_name');
         $isSuperAdmin = session('admin.id') == AdminConstant::SUPER_ADMIN_ID ? true : false;
         /**
-         * 给视图模版赋值 $变量名
-         * {:sysconfig('site','site_name')}  这种是使用系统助手函数赋值
+         * 1：给视图模版赋值 $变量名
+         * 2：这种是使用系统助手函数赋值 {:sysconfig('site','site_name')} app/common.php
          */
         $data = [
             'adminModuleName'      => $adminModuleName,

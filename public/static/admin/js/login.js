@@ -24,12 +24,17 @@ define(["easy-admin"], function (ea) {
                     $(this).addClass('icon-check');
                 }
             });
-            
+
             $('.login-tip').on('click', function () {
                 $('.icon-nocheck').click();
             });
-
+            //public/static/plugs/easy-admin/easy-admin.js
+            //ea.listen(preposeCallback, ok, no, ex)
             ea.listen(function (data) {
+                /*Object.keys(data).forEach(function(key){
+                    alert(data[key]);
+                });*/
+                //处理提交前的数据
                 data['keep_login'] = $('.icon-nocheck').hasClass('icon-check') ? 1 : 0;
                 return data;
             }, function (res) {

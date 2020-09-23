@@ -68,18 +68,22 @@ class Login extends AdminController
                 $this->error('账号已被禁用');
             }
             $admin->login_num += 1;
+            //保存返回记录集并转为数据保存到session中去
             $admin->save();
             $admin = $admin->toArray();
             unset($admin['password']);
             $admin['expire_time'] = $post['keep_login'] == 1 ? true : time() + 7200;
             session('admin', $admin);
+            //保存返回记录集并转为数据保存到session中去
             $this->success('登录成功');
         }
         //初始化登录界面 demo 在 AdminController类定义，也是读取了.Env 配置
         $this->assign('captcha', $captcha);
         $this->assign('demo', $this->isDemo);
+        $this->assign('password', password('123456'));
         //调用view视图 app/admin/view/login/index.html
         return $this->fetch();
+        //return $this->fetch("index1");
     }
 
     /**

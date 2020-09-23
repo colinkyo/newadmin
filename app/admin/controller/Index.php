@@ -19,6 +19,7 @@ class Index extends AdminController
      */
     public function index()
     {
+        //渲染app/admin/view/index/index.html 传值admin
         return $this->fetch('', [
             'admin' => session('admin'),
         ]);

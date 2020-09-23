@@ -7,14 +7,16 @@ define(["jquery", "easy-admin", "echarts", "echarts-theme", "miniAdmin", "miniTa
                 clearUrl: ea.url("ajax/clearCache"), // 缓存清理接口
                 urlHashLocation: true,      // 是否打开hash定位
                 bgColorDefault: false,      // 主题默认配置
-                multiModule: true,          // 是否开启多模块
+                multiModule: true,          // 是否开启多模块 //决定了后台头部菜单和左边菜单的展示模式
                 menuChildOpen: false,       // 是否默认展开菜单
                 loadingTime: 0,             // 初始化加载时间
                 pageAnim: true,             // iframe窗口动画
                 maxTabNum: 20,              // 最大的tab打开数量
             };
+            //public/static/plugs/lay-module/layuimini/miniAdmin.js
+            //调用接口后，开始初始化左边头部菜单
             miniAdmin.render(options);
-
+            //调用接口后，开始初始化左边头部菜单
             $('.login-out').on("click", function () {
                 ea.request.get({
                     url: 'login/out',

@@ -34,7 +34,7 @@ trait JumpTrait
         }
 
         $result = [
-            'code' => 1,
+            'code' => 1, //code 为 0，会决定运行 a.listen(preposeCallback, ok, no, ex) 中的 ok
             'msg'  => $msg,
             'data' => $data,
             'url'  => $url,
@@ -71,13 +71,14 @@ trait JumpTrait
 
         $type   = $this->getResponseType();
         $result = [
-            'code' => 0,
+            'code' => 0,//code 为 0，会决定运行 a.listen(preposeCallback, ok, no, ex) 中的 no
             'msg'  => $msg,
             'data' => $data,
             'url'  => $url,
             'wait' => $wait,
         ];
         if ($type == 'html') {
+            //读取config/app.php  中的 app.php中的dispatch_error_tmpl
             $response = view(app('config')->get('app.dispatch_error_tmpl'), $result);
         } elseif ($type == 'json') {
             $response = json($result);
